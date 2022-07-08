@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('role')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            $table->auditableWithDeletes();
 
             $table->unique(['team_id', 'user_id']);
         });

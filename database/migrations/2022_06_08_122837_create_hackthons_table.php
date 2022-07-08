@@ -13,10 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('developers', function (Blueprint $table) {
+            $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email', 300)->unique();
+            $table->longText('description')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('hackthons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->bigInteger('form_id');
             $table->auditableWithDeletes();
             $table->timestamps();
             $table->softDeletes();

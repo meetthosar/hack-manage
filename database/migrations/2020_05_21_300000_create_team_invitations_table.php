@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('role')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            $table->auditableWithDeletes();
 
             $table->unique(['team_id', 'email']);
         });

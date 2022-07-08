@@ -25,4 +25,42 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::view('hackathons', 'hackathons.index')->name('hackathons');
+});
+/* Auto-generated admin routes */
+Route::middleware(['auth', 'role:' . admin_roles()])->group(static function () {
+    Route::prefix('admin')->name('admin/')->group(static function() {
+        Route::prefix('user')->name('user/')->group(static function() {
+            Route::get('/', App\Http\Livewire\Users\Users::class)->name('index');
+        });
+    });
+});/* Auto-generated admin routes */
+Route::middleware(['auth', 'role:' . admin_roles()])->group(static function () {
+    Route::prefix('admin')->name('admin/')->group(static function() {
+        Route::prefix('permission')->name('permission/')->group(static function() {
+            Route::get('/', App\Http\Livewire\Permissions\Permissions::class)->name('index');
+        });
+    });
+});/* Auto-generated admin routes */
+Route::middleware(['auth', 'role:' . admin_roles()])->group(static function () {
+    Route::prefix('admin')->name('admin/')->group(static function() {
+        Route::prefix('role')->name('role/')->group(static function() {
+            Route::get('/', App\Http\Livewire\Roles\Roles::class)->name('index');
+        });
+    });
+});/* Auto-generated admin routes */
+Route::middleware(['auth', 'role:' . admin_roles()])->group(static function () {
+    Route::prefix('admin')->name('admin/')->group(static function() {
+        Route::prefix('activitylog')->name('activitylog/')->group(static function() {
+            Route::get('/', App\Http\Livewire\ActivityLogs\ActivityLogs::class)->name('index');
+        });
+    });
+});/* Auto-generated admin routes */
+Route::middleware(['auth', 'role:' . admin_roles()])->group(static function () {
+    Route::prefix('admin')->name('admin/')->group(static function() {
+        Route::prefix('hackthon')->name('hackthon/')->group(static function() {
+            Route::get('/', App\Http\Livewire\Hackthons\Hackthons::class)->name('index');
+        });
+    });
 });

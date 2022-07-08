@@ -16,15 +16,13 @@ return new class extends Migration
         Schema::create('phase_participants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('phase_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email', 300)->unique();
-            $table->longText('description')->nullable();
+            $table->unsignedBigInteger('developer_id');
             $table->auditableWithDeletes();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('phase_id')->references('id')->on('hackthon_phases')->onDelete('restrict');
+            $table->foreign('developer_id')->references('id')->on('developers')->onDelete('restrict');
         });
     }
 
